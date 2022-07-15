@@ -260,10 +260,10 @@
                 {
                     "name": "",
                     "id": "a381ceb2-1366-4e72-aead-6ee98048580a",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
