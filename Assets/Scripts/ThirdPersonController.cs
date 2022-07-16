@@ -162,7 +162,11 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            if(_animator.GetBool("CanMove"))
+            {
+                Move();
+            }
+            
         }
 
         private void LateUpdate()
