@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public int health; //the number that is our actual health
-    public int maxHealth; //our maximum health
+    public int maxHealth = 100; //our maximum health
     public Slider healthSlider; //the slider that represents our health
 
-    private void Awake()
+    void Start()
     {
-        healthSlider = GetComponent<Slider>();
+        health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.minValue = 0;
         healthSlider.SetDirection(Slider.Direction.LeftToRight, true); //I have no idea if this should be true or false
