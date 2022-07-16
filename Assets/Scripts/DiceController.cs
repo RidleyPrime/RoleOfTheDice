@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DiceController : MonoBehaviour
 {
     PlayerHealth health;
+    ClassController currentClass;
+    
     public int numDice = 0;
     public int maxDice = 3;
     public int diceHeal = 25;
-
-    public int nextRole = 0;
+ 
+    public int nextRole = -1;
     public int diceMeter = 0;
     [SerializeField] Slider diceMeterUI;
     [SerializeField] Slider diceOverchargeUI;
@@ -25,6 +28,7 @@ public class DiceController : MonoBehaviour
     void Start()
     {
         health = GetComponent<PlayerHealth>();
+        currentClass = GetComponent<ClassController>();
         ShowDice();
     }
 
@@ -43,10 +47,6 @@ public class DiceController : MonoBehaviour
     {
         if (diceMeter >= 150)
         {
-            if (nextRole == 0) // if nextRole is Zero, its not rolled yet, so roll it.
-            {
-                RollNextRole();
-            }
             diceMeter = 150;
         }
         diceMeterUI.value = diceMeter;
@@ -57,8 +57,13 @@ public class DiceController : MonoBehaviour
 
     private void RollNextRole()
     {
-        nextRole = Random.Range(0, 6) + 1;
+        HashSet<ClassController.Role> validRoles = new HashSet<ClassController.Role>(System.Enum.GetValues(typeof(ClassController.Role)) as IEnumerable<ClassController.Role>);
+        validRoles.Remove(currentClass.role);
+        validRoles.Remove((ClassController.Role)nextRole);
+        var newRole = validRoles.OrderBy(e => Random.Range(System.Int32.MinValue, System.Int32.MaxValue)).FirstOrDefault();
+        nextRole = (int)newRole;
         Debug.Log("Next Dice is " + nextRole);
+
         nextRoleImage.sprite = diceFaces[nextRole - 1];
     }
 
@@ -69,7 +74,7 @@ public class DiceController : MonoBehaviour
             numDice++;
             ShowDice();
         }
-        if(numDice == maxDice)
+        else if(numDice == maxDice)
         {
             Consume();
         }
@@ -117,13 +122,10 @@ public class DiceController : MonoBehaviour
     void Consume()
     {
         health.heal(diceHeal);
-        if (diceMeter >= 150)
+        RollNextRole();
+        if (diceMeter < 150)
         {
-            RollNextRole(); // if dice meter is already max, reroll next role
-        }
-        else
-        {
-            diceMeter = 150; // if dice meter is already max, reroll next role
+            diceMeter = 150; // otherwise set meter to full, and reveal next role
             SetDiceCharge(diceMeter);
         }
     }
@@ -131,6 +133,8 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UI Mumbo jumbo, track numdice
+        
     }
+
+    
 }

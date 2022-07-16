@@ -16,7 +16,7 @@ public class ClassController : MonoBehaviour
      * 6: Paladin = Very tanky, slow aoe hammer attacks in a decent range, good vs swarms / hordes
      * 
     */
-    public enum Roles 
+    public enum Role //changing it to just Role instead of Roles, since singular enum is common practice
     {
         Thief = 1,
         Ranger = 2,
@@ -25,7 +25,7 @@ public class ClassController : MonoBehaviour
         Lancer = 5,
         Paladin = 6
     }
-    Roles role;
+    public Role role;
     
     public float attackMoveSpeedModifier = 0.1f;
 
@@ -42,7 +42,7 @@ public class ClassController : MonoBehaviour
 
     private void Start()
     {
-        role = Roles.Warrior;
+        role = Role.Warrior;
         controller = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
 
