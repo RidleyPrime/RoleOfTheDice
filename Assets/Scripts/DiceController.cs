@@ -14,6 +14,7 @@ public class DiceController : MonoBehaviour
     public int diceMeter = 0;
     [SerializeField] Slider diceMeterUI;
     [SerializeField] Slider diceOverchargeUI;
+    [SerializeField] Image nextRoleImage;
 
     [SerializeField] Image dice1;
     [SerializeField] Image dice2;
@@ -49,13 +50,16 @@ public class DiceController : MonoBehaviour
             diceMeter = 150;
         }
         diceMeterUI.value = diceMeter;
-        diceOverchargeUI.value = diceMeter - 100;
+        diceOverchargeUI.value = 50 - (diceMeter - 100);
 
+        
     }
 
     private void RollNextRole()
     {
-        nextRole = Random.Range(0, 6);
+        nextRole = Random.Range(0, 6) + 1;
+        Debug.Log("Next Dice is " + nextRole);
+        nextRoleImage.sprite = diceFaces[nextRole - 1];
     }
 
     public void CollectDice()
