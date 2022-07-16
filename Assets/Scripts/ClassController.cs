@@ -68,6 +68,10 @@ public class ClassController : MonoBehaviour
         {
             animator.SetTrigger("Attack");
 
+            if (animator.GetBool("MidAttack"))
+            {
+                gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+            }
 
             //Warrior Start
             bool attacking = animator.GetBool("MidAttack");
@@ -118,13 +122,17 @@ public class ClassController : MonoBehaviour
     {
         animator.SetTrigger("Roll");
         Debug.Log("Roll!!!!");
+        role = (Role)Random.Range(2, 5);
     }
 
     private void Update()
     {
         animator.SetInteger("Class", (int)role);
 
-
+        if(animator.GetBool("MidAttack"))
+        {
+            gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+        }
         //RANGER RELEASE CHECK
         if (role == Role.Ranger)
         {
@@ -164,7 +172,7 @@ public class ClassController : MonoBehaviour
 
     void WizardAttack()
     {
-        Transform pivot = GameObject.Find("Right_Hand").transform;
+        Transform pivot = GameObject.Find("WizardAttackPivot").transform;
 
         GameObject tempProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         tempProjectile.transform.localScale = new Vector3(0.5f, .5f, .5f);
