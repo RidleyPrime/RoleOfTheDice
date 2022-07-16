@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
+using UnityEngine.InputSystem;
 
 public class ClassController : MonoBehaviour
 {
@@ -31,12 +32,14 @@ public class ClassController : MonoBehaviour
 
     public Animator animator;
     public ThirdPersonController controller;
+    public InputAction leftClick;
 
     //These floats are used for controlling character move speed during attacks
     private float tempSpeed;
     private float originalSpeed;
     private float timeElapsed;
     private float attackLerpDuration = .1f;
+
 
     
 
@@ -49,44 +52,71 @@ public class ClassController : MonoBehaviour
         originalSpeed = controller.SprintSpeed;
     }
 
-    
-
     void OnAttack()
     {
         /*
          * This is the combo system that uses bool parameters in the animator to transition between the attacks back to idle
          */
-        animator.SetInteger("Class", (int)role);
-        animator.SetTrigger("Attack");
-        bool attacking = animator.GetBool("MidAttack");
-        bool attack1 = animator.GetBool("Attack1");
-        bool attack2 = animator.GetBool("Attack2");
-        bool attack3 = animator.GetBool("Attack3");
-
-
-        if (!attack2&!attack3)
+        if(role==Role.Warrior)
         {
-            animator.SetBool("Attack1", true);
-        }
+            animator.SetTrigger("Attack");
 
-        if (attacking)
+
+            //Warrior Start
+            bool attacking = animator.GetBool("MidAttack");
+            bool attack1 = animator.GetBool("Attack1");
+            bool attack2 = animator.GetBool("Attack2");
+            bool attack3 = animator.GetBool("Attack3");
+
+
+            if (!attack2 & !attack3)
+            {
+                animator.SetBool("Attack1", true);
+            }
+
+            if (attacking)
+            {
+                animator.SetBool("Attack2", true);
+                animator.SetBool("Attack1", false);
+
+
+            }
+            if (attack2)
+            {
+                animator.SetBool("Attack3", true);
+            }
+        }
+        //Warrior End
+
+
+        //Ranger Start
+        if(role==Role.Ranger)
         {
-            animator.SetBool("Attack2", true);
-            animator.SetBool("Attack1", false);
-
+            animator.SetTrigger("Attack");
 
         }
-        if (attack2)
-        {
-            animator.SetBool("Attack3", true);
-
-        }
+        //Ranger End
     }
 
     void OnRoll()
     {
         animator.SetTrigger("Roll");
         Debug.Log("Roll!!!!");
+    }
+
+    private void Update()
+    {
+        animator.SetInteger("Class", (int)role);
+
+
+        //RANGER RELEASE CHECK
+        if (role == Role.Ranger)
+        {
+            if (!animator.GetBool("MidAttack"))
+            {
+                animator.SetBool("Attack2", true);
+            }
+        }
     }
 
     public void LockMovement()
