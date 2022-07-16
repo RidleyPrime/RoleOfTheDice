@@ -19,6 +19,8 @@ public class DiceController : MonoBehaviour
     [SerializeField] Image dice2;
     [SerializeField] Image dice3;
 
+    [SerializeField] List<Sprite> diceFaces = new List<Sprite>();
+
     void Start()
     {
         health = GetComponent<PlayerHealth>();
