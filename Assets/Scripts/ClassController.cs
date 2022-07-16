@@ -26,10 +26,11 @@ public class ClassController : MonoBehaviour
         Paladin = 6
     }
     Roles role;
-    public Animator animator;
-    public Rigidbody rb;
-    public ThirdPersonController controller;
+    
     public float attackMoveSpeedModifier = 0.1f;
+
+    public Animator animator;
+    public ThirdPersonController controller;
 
     //These floats are used for controlling character move speed during attacks
     private float tempSpeed;
@@ -43,7 +44,8 @@ public class ClassController : MonoBehaviour
     private void Start()
     {
         role = Roles.Warrior;
-        controller.GetComponent<ThirdPersonController>();
+        controller = GetComponent<ThirdPersonController>();
+        animator = GetComponent<Animator>();
 
         originalSpeed = controller.SprintSpeed;
     }
@@ -56,13 +58,16 @@ public class ClassController : MonoBehaviour
     {
         animator.SetInteger("Class", (int)role);
         animator.SetTrigger("Attack");
-        //animator.ResetTrigger("Attack");
 
+        if(animator.GetBool("MidAttack"))
+        {
+            animator.SetBool("CanCombo", true);
+        }
     }
 
-    void OnUse()
+    void OnRoll()
     {
-
+        animator.SetTrigger("Roll");
     }
 
     public void LockMovement()
@@ -74,6 +79,9 @@ public class ClassController : MonoBehaviour
         //animator.SetBool("CanMove", false);
         tempSpeed = attackMoveSpeedModifier * controller.SprintSpeed;
         controller.SprintSpeed = tempSpeed;
+        animator.SetBool("MidAttack",true);
+        //animator.SetBool("CanCombo", false);
+
     }
 
     public void UnlockMovement() // Gets called at end of attack animation in animation event
@@ -81,6 +89,7 @@ public class ClassController : MonoBehaviour
         //animator.SetBool("CanMove", true);
         attackLerpDuration = attackMoveSpeedModifier;
         StartCoroutine(AttackLerp());
+        animator.SetBool("MidAttack", false);
 
     }
 
