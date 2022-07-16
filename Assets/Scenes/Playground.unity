@@ -1428,6 +1428,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89db3ebe31f58994e9faa610de9bd35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1762682276}
+--- !u!95 &1762682276 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6982812146204527121, guid: 64dce48905ffd9b4293e595fa6941544,
+    type: 3}
+  m_PrefabInstance: {fileID: 1762682258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1764214107
 GameObject:
   m_ObjectHideFlags: 0

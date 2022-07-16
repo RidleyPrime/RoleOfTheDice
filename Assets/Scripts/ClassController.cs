@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 public class ClassController : MonoBehaviour
 {
@@ -15,7 +16,83 @@ public class ClassController : MonoBehaviour
      * 6: Paladin = Very tanky, slow aoe hammer attacks in a decent range, good vs swarms / hordes
      * 
     */
+    public enum Roles 
+    {
+        Thief = 1,
+        Ranger = 2,
+        Wizard = 3,
+        Warrior = 4,
+        Lancer = 5,
+        Paladin = 6
+    }
+    Roles role;
+    public Animator animator;
+    public Rigidbody rb;
+    public ThirdPersonController controller;
+    public float attackMoveSpeedModifier = 0.1f;
+
+    //These floats are used for controlling character move speed during attacks
+    private float tempSpeed;
+    private float originalSpeed;
+    private float timeElapsed;
+    private float attackLerpDuration = .1f;
 
 
 
+
+    private void Start()
+    {
+        role = Roles.Warrior;
+        controller.GetComponent<ThirdPersonController>();
+
+        originalSpeed = controller.SprintSpeed;
+    }
+
+
+
+
+
+    void OnAttack()
+    {
+        animator.SetInteger("Class", (int)role);
+        animator.SetTrigger("Attack");
+        //animator.ResetTrigger("Attack");
+
+    }
+
+    void OnUse()
+    {
+
+    }
+
+    public void LockMovement()
+        /*
+         * Gets called at the beginning of attack animations in an animation event
+         * 
+         */
+    {
+        //animator.SetBool("CanMove", false);
+        tempSpeed = attackMoveSpeedModifier * controller.SprintSpeed;
+        controller.SprintSpeed = tempSpeed;
+    }
+
+    public void UnlockMovement() // Gets called at end of attack animation in animation event
+    {
+        //animator.SetBool("CanMove", true);
+        attackLerpDuration = attackMoveSpeedModifier;
+        StartCoroutine(AttackLerp());
+
+    }
+
+    IEnumerator AttackLerp()//This lerps the attack speed back to the original speed
+    {
+        float timeElapsed = 0;
+        while (timeElapsed < attackLerpDuration)
+        {
+            controller.SprintSpeed = Mathf.Lerp(tempSpeed, originalSpeed, timeElapsed / attackLerpDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        controller.SprintSpeed = originalSpeed;
+    }
 }
