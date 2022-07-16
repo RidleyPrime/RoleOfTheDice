@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Standing Melee Attack Horizontal
+    second: Warrior Attack 1
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing Melee Attack Horizontal
+      name: Warrior Attack 1
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -69,6 +69,20 @@ ModelImporter:
         messageOptions: 0
       - time: 0.41199946
         functionName: UnlockMovement
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: OpenComboWindow
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.97211677
+        functionName: CloseComboWindow
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

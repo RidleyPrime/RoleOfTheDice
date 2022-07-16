@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public int health; //the number that is our actual health
     public int maxHealth = 100; //our maximum health
    // public Slider healthSlider; //the slider that represents our health
+=======
+    public float health; //the number that is our actual health
+    public float maxHealth = 100f; //our maximum health
+    public Slider healthSlider; //the slider that represents our health
+>>>>>>> Stashed changes
 
    // void Start()
    // {
@@ -24,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void heal(int healAmount)
     {
-        int tempHealth = health;
+        float tempHealth = health;
         if(tempHealth + healAmount > maxHealth)
         {
             health = maxHealth;

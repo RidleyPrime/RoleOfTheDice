@@ -51,17 +51,36 @@ public class ClassController : MonoBehaviour
     }
 
 
-
-
-
     void OnAttack()
     {
+        /*
+         * This is the combo system that uses bool parameters in the animator to transition between the attacks back to idle
+         */
         animator.SetInteger("Class", (int)role);
         animator.SetTrigger("Attack");
+        bool attacking = animator.GetBool("MidAttack");
+        bool attack1 = animator.GetBool("Attack1");
+        bool attack2 = animator.GetBool("Attack2");
+        bool attack3 = animator.GetBool("Attack3");
 
-        if(animator.GetBool("MidAttack"))
+
+        if (!attack1 & !attacking)
         {
-            animator.SetBool("CanCombo", true);
+            animator.SetBool("Attack1", true);
+        }
+
+        if(attacking)
+        {
+            if(!attack2)
+            {
+                animator.SetBool("Attack2", true);
+                animator.SetBool("Attack1", false);
+
+            }
+            if(!attack2&!attack3)
+            {
+                animator.SetBool("Attack3", true);
+            }
         }
     }
 
@@ -73,24 +92,20 @@ public class ClassController : MonoBehaviour
     public void LockMovement()
         /*
          * Gets called at the beginning of attack animations in an animation event
-         * 
          */
     {
-        //animator.SetBool("CanMove", false);
         tempSpeed = attackMoveSpeedModifier * controller.SprintSpeed;
         controller.SprintSpeed = tempSpeed;
-        animator.SetBool("MidAttack",true);
-        //animator.SetBool("CanCombo", false);
+
+        animator.ResetTrigger("Attack");
+
 
     }
 
     public void UnlockMovement() // Gets called at end of attack animation in animation event
     {
-        //animator.SetBool("CanMove", true);
         attackLerpDuration = attackMoveSpeedModifier;
         StartCoroutine(AttackLerp());
-        animator.SetBool("MidAttack", false);
-
     }
 
     IEnumerator AttackLerp()//This lerps the attack speed back to the original speed
@@ -104,4 +119,14 @@ public class ClassController : MonoBehaviour
         }
         controller.SprintSpeed = originalSpeed;
     }
+
+    public void OpenComboWindow()//Called at beginning of attack animations
+    {
+        animator.SetBool("MidAttack", true);
+    }
+    public void CloseComboWindow()//Called at end of attack animations
+    {
+        animator.SetBool("MidAttack", false);
+    }
 }
+
