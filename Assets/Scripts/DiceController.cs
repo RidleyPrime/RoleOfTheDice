@@ -42,17 +42,32 @@ public class DiceController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
-    private void SetDiceCharge(int dicemeter)
+    private void updateUI()
     {
-        if (diceMeter >= 150)
+        diceMeterUI.value = diceMeter;
+        diceOverchargeUI.value = 50 - (diceMeter - 100);
+    }
+    public void AddDiceCharge(int diceCharge)
+    {
+        if (diceCharge + diceMeter >= 150)
         {
             diceMeter = 150;
         }
-        diceMeterUI.value = diceMeter;
-        diceOverchargeUI.value = 50 - (diceMeter - 100);
-
-        
+        else
+        {
+            diceMeter += diceCharge;
+        }
+        updateUI();
+    }
+    public void ResetDiceCharge()
+    {
+        diceMeter = 0;
+        updateUI();
+    }
+    public void FillDiceCharge()
+    {
+        diceMeter = 150;
+        updateUI();
     }
 
     private void RollNextRole()
@@ -123,11 +138,16 @@ public class DiceController : MonoBehaviour
     {
         health.heal(diceHeal);
         RollNextRole();
-        if (diceMeter < 150)
+        FillDiceCharge();
+    }
+
+    public bool canRoll()
+    {
+        if (diceMeter >= 150)
         {
-            diceMeter = 150; // otherwise set meter to full, and reveal next role
-            SetDiceCharge(diceMeter);
+            return true;
         }
+        return false;
     }
 
     // Update is called once per frame

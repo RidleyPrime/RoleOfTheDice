@@ -1406,7 +1406,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 497decd0f1c198a4aaf8c41313194bff,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 497decd0f1c198a4aaf8c41313194bff,
         type: 3}
@@ -2365,17 +2365,17 @@ PrefabInstance:
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -3.88
       objectReference: {fileID: 0}
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.92
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
@@ -2481,7 +2481,7 @@ MonoBehaviour:
   m_text: 'WASD to Move
 
 
-    Space to Jumo
+    Space to Jump
 
 
     LClick to Attack
@@ -3121,7 +3121,7 @@ RectTransform:
   - {fileID: 669980787}
   - {fileID: 476231810}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3296,9 +3296,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3570,6 +3570,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.2939072
       objectReference: {fileID: 0}
+    - target: {fileID: 1878117208200826764, guid: a897460684c44a24392b6508aa6adc7b,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 1082452810}
     - target: {fileID: 1878117208200826807, guid: a897460684c44a24392b6508aa6adc7b,
         type: 3}
       propertyPath: diceMeterUI
