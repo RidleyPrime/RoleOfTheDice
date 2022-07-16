@@ -1,30 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health;
-    [SerializeField] HealthBar healthBar;
-    // Start is called before the first frame update
-    void Start()
+    public int health; //the number that is our actual health
+    public int maxHealth; //our maximum health
+    public Slider healthSlider; //the slider that represents our health
+
+    private void Awake()
     {
-        healthBar.SetMaxHealth(health);
+        healthSlider = GetComponent<Slider>();
+        healthSlider.maxValue = maxHealth;
+        healthSlider.minValue = 0;
+        healthSlider.SetDirection(Slider.Direction.LeftToRight, true); //I have no idea if this should be true or false
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //UI Mumbo Jumbo, checks health in real time. need to make sure this works
     }
-
-    private void OnTriggerEnter(Collider other)
+    public void heal(int healAmount)
     {
-        if (other.gameObject.tag == "Enemy")
+        int tempHealth = health;
+        if(tempHealth + healAmount > maxHealth)
         {
-            Debug.Log("Damage");
-            health--;
-            healthBar.SetHealth(health);
+            health = maxHealth;
+        }
+        else
+        {
+            health += healAmount;
         }
     }
+    //make a damage function? or is this fine if we just pass the right colliders
+
+    private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                Debug.Log("Damage");
+                health--;
+                healthSlider.value = health;
+        }
+        }
 }

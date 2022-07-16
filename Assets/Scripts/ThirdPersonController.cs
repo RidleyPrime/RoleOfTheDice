@@ -356,14 +356,6 @@ namespace StarterAssets
             }
         }
 
-        private void Use() //consume your saved dice at any time
-        {
-            if(numDice > 0)
-            {
-               //consume a dice
-            }
-        }
-
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
