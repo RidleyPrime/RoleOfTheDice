@@ -86,6 +86,7 @@ public class ClassController : MonoBehaviour
     void OnRoll()
     {
         animator.SetTrigger("Roll");
+        Debug.Log("Roll!!!!");
     }
 
     public void LockMovement()
