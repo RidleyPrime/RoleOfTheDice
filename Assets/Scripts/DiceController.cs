@@ -16,10 +16,15 @@ public class DiceController : MonoBehaviour
     [SerializeField] Slider diceMeterUI;
     [SerializeField] Slider diceOverchargeUI;
 
+    [SerializeField] Image dice1;
+    [SerializeField] Image dice2;
+    [SerializeField] Image dice3;
+
     void Start()
     {
         health = GetComponent<PlayerHealth>();
         meter = GetComponent<PlayerMeter>();
+        ShowDice();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -58,6 +63,7 @@ public class DiceController : MonoBehaviour
         if(numDice < maxDice)
         {
             numDice++;
+            ShowDice();
         }
         if(numDice == maxDice)
         {
@@ -70,7 +76,37 @@ public class DiceController : MonoBehaviour
         if (numDice > 0)
         {
             numDice--;
+            ShowDice();
             Consume();
+        }
+    }
+
+    void ShowDice() //Display how many dice you have
+    {
+        Debug.Log("You have" + numDice);
+        if (numDice == 0)
+        {
+            dice1.enabled = false;
+            dice2.enabled = false;
+            dice3.enabled = false;
+        }
+        else if (numDice == 1)
+        {
+            dice1.enabled = true;
+            dice2.enabled = false;
+            dice3.enabled = false;
+        }
+        else if (numDice == 2)
+        {
+            dice1.enabled = true;
+            dice2.enabled = true;
+            dice3.enabled = false;
+        }
+        else if (numDice == 3)
+        {
+            dice1.enabled = true;
+            dice2.enabled = true;
+            dice3.enabled = true;
         }
     }
 
