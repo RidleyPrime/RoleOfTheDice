@@ -1307,10 +1307,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89db3ebe31f58994e9faa610de9bd35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  role: 0
+  role: 2
   attackMoveSpeedModifier: 0.2
   animator: {fileID: 1762682276}
   controller: {fileID: 1762682273}
+  leftClick:
+    m_Name: Left Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d61aa8df-a7dc-4698-b350-11ef44e2d5bb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &1762682273 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544,
