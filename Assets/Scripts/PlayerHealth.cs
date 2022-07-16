@@ -7,15 +7,15 @@ public class PlayerHealth : MonoBehaviour
 {
     public int health; //the number that is our actual health
     public int maxHealth = 100; //our maximum health
-    public Slider healthSlider; //the slider that represents our health
+   // public Slider healthSlider; //the slider that represents our health
 
-    void Start()
-    {
-        health = maxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.minValue = 0;
-        healthSlider.SetDirection(Slider.Direction.LeftToRight, true); //I have no idea if this should be true or false
-    }
+   // void Start()
+   // {
+     //   health = maxHealth;
+       // healthSlider.maxValue = maxHealth;
+       // healthSlider.minValue = 0;
+       // healthSlider.SetDirection(Slider.Direction.LeftToRight, true); //I have no idea if this should be true or false
+   // }
 
     // Update is called once per frame
     void Update()
@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 Debug.Log("Damage");
                 health--;
-                healthSlider.value = health;
+              //  healthSlider.value = health;
         }
         }
 }

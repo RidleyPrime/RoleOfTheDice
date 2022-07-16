@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class PlayerMeter : MonoBehaviour
 {
     public int meter = 0; //the number that is our actual, current meter
-    public int maxMeter =100; //our maximum meter, including overcharge
+    public int maxMeter = 100; //our maximum meter, including overcharge
     public int overChargeLimit = 70; //point at which we can roll
     public Slider meterSlider; //the slider that represents our health
 
     private void Awake()
-    {
-        meterSlider.maxValue = maxMeter;
-        meterSlider.minValue = 0;
-        meterSlider.SetDirection(Slider.Direction.LeftToRight, true); //I have no idea if this should be true or false
+    {//look at this tomorrow, maybe float int conversion weirdness
+       // meterSlider.maxValue = maxMeter;
+      //  meterSlider.minValue = 0;
+       // meterSlider.SetDirection(Slider.Direction.LeftToRight, true); //I have no idea if this should be true or false
     }
     // Update is called once per frame
     void Update()
