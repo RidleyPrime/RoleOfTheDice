@@ -22,7 +22,6 @@ public class DiceController : MonoBehaviour
     void Start()
     {
         health = GetComponent<PlayerHealth>();
-        meter = GetComponent<PlayerMeter>();
         ShowDice();
     }
 
