@@ -64,23 +64,22 @@ public class ClassController : MonoBehaviour
         bool attack3 = animator.GetBool("Attack3");
 
 
-        if (!attack1 & !attacking)
+        if (!attack2&!attack3)
         {
             animator.SetBool("Attack1", true);
         }
 
-        if(attacking)
+        if (attacking)
         {
-            if(!attack2)
-            {
-                animator.SetBool("Attack2", true);
-                animator.SetBool("Attack1", false);
+            animator.SetBool("Attack2", true);
+            animator.SetBool("Attack1", false);
 
-            }
-            if(!attack2&!attack3)
-            {
-                animator.SetBool("Attack3", true);
-            }
+
+        }
+        if (attack2)
+        {
+            animator.SetBool("Attack3", true);
+
         }
     }
 

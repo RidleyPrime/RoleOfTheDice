@@ -5,15 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-<<<<<<< Updated upstream
     public int health; //the number that is our actual health
     public int maxHealth = 100; //our maximum health
    // public Slider healthSlider; //the slider that represents our health
-=======
-    public float health; //the number that is our actual health
-    public float maxHealth = 100f; //our maximum health
-    public Slider healthSlider; //the slider that represents our health
->>>>>>> Stashed changes
 
    // void Start()
    // {
