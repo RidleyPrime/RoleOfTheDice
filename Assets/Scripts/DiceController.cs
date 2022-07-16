@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class DiceController : MonoBehaviour
 {
     PlayerHealth health;
-    PlayerMeter meter;
     public int numDice = 0;
     public int maxDice = 3;
     public int diceHeal = 25;
@@ -19,7 +18,6 @@ public class DiceController : MonoBehaviour
     void Start()
     {
         health = GetComponent<PlayerHealth>();
-        meter = GetComponent<PlayerMeter>();
     }
 
     private void OnTriggerEnter(Collider other)
