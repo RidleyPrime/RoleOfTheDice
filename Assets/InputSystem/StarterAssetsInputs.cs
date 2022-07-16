@@ -12,9 +12,6 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
-		public bool attack;
-		public bool use;
-		public bool roll;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -46,21 +43,6 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
-
-		public void OnAttack(InputValue value)
-        {
-			AttackInput(value.isPressed);
-        }
-
-		public void OnUse(InputValue value)
-        {
-			UseInput(value.isPressed);
-        }
-
-		public void OnRoll(InputValue value)
-        {
-			RollInput(value.isPressed);
-        }
 #endif
 
 
@@ -83,22 +65,6 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-
-		public void AttackInput(bool newAttackState)
-        {
-			attack = newAttackState;
-        }
-
-		public void UseInput(bool newUseState) 
-		{
-			use = newUseState;
-		}
-
-		public void RollInput(bool newRollState)
-        {
-			roll = newRollState;
-        }
-
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
