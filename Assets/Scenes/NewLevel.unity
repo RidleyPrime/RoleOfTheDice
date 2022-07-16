@@ -3202,19 +3202,19 @@ MonoBehaviour:
   dice1: {fileID: 561518154}
   dice2: {fileID: 767978075}
   dice3: {fileID: 207233466}
+  diceFaces:
+  - {fileID: 21300000, guid: 81f46c95e3d78fd42b62b9fc1bf29ec3, type: 3}
+  - {fileID: 21300000, guid: 5e26f300cd0f55e4d809e3a746e72605, type: 3}
+  - {fileID: 21300000, guid: b930f19ec2d8d7f48af28320b0664e61, type: 3}
+  - {fileID: 21300000, guid: 5bcf83dde3c86044b8e9182e7c243b90, type: 3}
+  - {fileID: 21300000, guid: b138e3006ff3c1d448e24c859563970f, type: 3}
+  - {fileID: 21300000, guid: 811ac3d001457da41a987be20b7208c2, type: 3}
 --- !u!4 &1844838598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3177196991166537710, guid: a897460684c44a24392b6508aa6adc7b,
     type: 3}
   m_PrefabInstance: {fileID: 1262131158}
   m_PrefabAsset: {fileID: 0}
-  diceFaces:
-  - {fileID: 21300000, guid: 81f46c95e3d78fd42b62b9fc1bf29ec3, type: 3}
-  - {fileID: 21300000, guid: 5e26f300cd0f55e4d809e3a746e72605, type: 3}
-  - {fileID: 21300000, guid: b930f19ec2d8d7f48af28320b0664e61, type: 3}
-  - {fileID: 21300000, guid: b138e3006ff3c1d448e24c859563970f, type: 3}
-  - {fileID: 21300000, guid: b138e3006ff3c1d448e24c859563970f, type: 3}
-  - {fileID: 21300000, guid: 811ac3d001457da41a987be20b7208c2, type: 3}
 --- !u!1001 &1854382859
 PrefabInstance:
   m_ObjectHideFlags: 0
