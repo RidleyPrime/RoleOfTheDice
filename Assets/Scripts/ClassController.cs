@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
+using UnityEngine.UI;
 
 public class ClassController : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class ClassController : MonoBehaviour
         Paladin = 6
     }
     Roles role;
+
+    public int nextRole = 0;
     
     public float attackMoveSpeedModifier = 0.1f;
 
@@ -39,7 +42,9 @@ public class ClassController : MonoBehaviour
     private float attackLerpDuration = .1f;
 
 
-
+    public int diceMeter = 0;
+    [SerializeField] Slider diceMeterUI;
+    [SerializeField] Slider diceOverchargeUI;
 
     private void Start()
     {
@@ -50,6 +55,43 @@ public class ClassController : MonoBehaviour
         originalSpeed = controller.SprintSpeed;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Powerup")
+        {
+            if (diceMeter >= 150)
+            {
+                RollNextRole(); // if dice meter is already max, reroll next role
+            }
+            else
+            {
+                diceMeter = 150; // if dice meter is already max, reroll next role
+                SetDiceCharge(diceMeter);
+            }
+            
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void SetDiceCharge(int dicemeter)
+    {
+        if (diceMeter >= 150)
+        {
+            if (nextRole == 0) // if nextRole is Zero, its not rolled yet, so roll it.
+            {
+                RollNextRole();
+            }
+            diceMeter = 150;
+        }
+        diceMeterUI.value = diceMeter;
+        diceOverchargeUI.value = diceMeter - 100;
+
+    }
+
+    private void RollNextRole()
+    {
+        nextRole = Random.Range(0, 6);
+    }
 
     void OnAttack()
     {
