@@ -17,7 +17,8 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
-     }
+        Win.enabled = false;
+    }
 
     public void heal(int healAmount)
     {
@@ -51,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.tag == "Win")
         {
+            Debug.Log("Damage");
             Win.enabled = true;
         }
     }

@@ -17,7 +17,6 @@ namespace EmeraldAI
         public List<string> ActiveEffects = new List<string>();
         public bool IsDead;
         [SerializeField] PlayerHealth health;
-        [SerializeField] int DamageAmount;
 
         public void SendPlayerDamage(int DamageAmount, Transform Target, EmeraldAISystem EmeraldComponent, bool CriticalHit = false)
         {
@@ -52,7 +51,7 @@ namespace EmeraldAI
                 //PlayerHealth.Heal(-DamageAmount);
                 PlayerHealth.DamagePlayer(DamageAmount);
                 Debug.Log("Damage" + DamageAmount);
-                health.heal(-10);
+                health.heal(-DamageAmount);
                 if (PlayerHealth.CurrentHealth <= 0)
                 {
                     IsDead = true;
