@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 100
+  controlID: 110
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,36 +416,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Character/Models/Hats/knight
+    - Assets/Character/Models/Weapons/crossbow/loaded
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Character/Models/Hats/knight
+  - Assets/Character/Models/Weapons/crossbow/loaded
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\lOlO\Desktop\GMTK\RoleOfTheDice
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 11.800018}
-    m_SelectedIDs: dc760000
-    m_LastClickedID: 30428
-    m_ExpandedIDs: 00000000d4720000e27400000c750000dc75000096760000187800001a780000ffffff7f
+    scrollPos: {x: 0, y: 70}
+    m_SelectedIDs: 26780000
+    m_LastClickedID: 30758
+    m_ExpandedIDs: 00000000087500000e770000287700002a7700003c77000022780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Animations
-      m_OriginalName: Animations
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 29920
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -459,7 +459,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d4720000
+    m_ExpandedIDs: 0000000008750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -589,9 +589,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4c86feff
-      m_LastClickedID: -96692
-      m_ExpandedIDs: 3ef7ffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 24f2ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -841,9 +841,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.0244328, y: 1.7516148, z: -0.71666336}
+    m_Target: {x: -0.31674594, y: 1.2334869, z: -2.721554}
     speed: 2
-    m_Value: {x: -0.06359637, y: 1.7393196, z: -0.65808964}
+    m_Value: {x: -0.364525, y: 1.2590655, z: -2.743709}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -890,13 +890,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.00895373, y: -0.9369141, z: 0.024208274, w: 0.3493923}
+    m_Target: {x: 0.0046792966, y: 0.98746276, z: -0.15713291, w: 0.028776947}
     speed: 2
-    m_Value: {x: 0.009397842, y: -0.93766314, z: 0.025635082, w: 0.34647113}
+    m_Value: {x: 0.004442207, y: 0.9871971, z: -0.15709078, w: 0.027287215}
   m_Size:
-    m_Target: 1.5831275
+    m_Target: 1.6144469
     speed: 2
-    m_Value: 1.5149546
+    m_Value: 1.6905203
   m_Ortho:
     m_Target: 0
     speed: 2
