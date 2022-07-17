@@ -50,6 +50,12 @@ public class ClassController : MonoBehaviour
     [SerializeField] WeaponManager weaponManager;
     [SerializeField] DiceController diceController;
 
+    [SerializeField] GameObject DiceModel1;
+    [SerializeField] GameObject DiceModel2;
+    [SerializeField] GameObject DiceModel3;
+    [SerializeField] GameObject DiceModel4;
+    [SerializeField] GameObject DiceModel5;
+    [SerializeField] GameObject DiceModel6;
 
     private void Start()
     {
@@ -142,9 +148,47 @@ public class ClassController : MonoBehaviour
             Debug.Log("Roll!!!!");
             dice.ResetDiceCharge();
             role = dice.getNextRole();
+
+            hideFalseDiceFaces();
+            if (role == Role.Warrior)   
+            {
+                DiceModel4.SetActive(true);
+
+            }
+            if (role == Role.Ranger)
+            {
+                DiceModel2.SetActive(true);
+            }
+            if (role == Role.Wizard)
+            {
+                DiceModel3.SetActive(true);
+            }
+            if (role == Role.Paladin)
+            {
+                DiceModel6.SetActive(true);
+            }
+            if (role == Role.Thief)
+            {
+                DiceModel1.SetActive(true);
+            }
+            if (role == Role.Lancer)
+            {
+                DiceModel5.SetActive(true);
+            }
             dice.RoleReady = false;
             weaponManager.showRightWeapons();
         }
+
+    }
+
+    public void hideFalseDiceFaces()
+    {
+        DiceModel1.SetActive(false);
+        DiceModel2.SetActive(false);
+        DiceModel3.SetActive(false);
+        DiceModel4.SetActive(false);
+        DiceModel5.SetActive(false);
+        DiceModel6.SetActive(false);
 
     }
 
