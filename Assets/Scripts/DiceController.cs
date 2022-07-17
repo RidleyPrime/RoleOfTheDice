@@ -20,17 +20,18 @@ public class DiceController : MonoBehaviour
     public int overChargeThreshold = 50;
     private int diceMeterMax;
 
+    //UI DiceMeter
     [SerializeField] Slider diceMeterUI;
     [SerializeField] Slider diceOverchargeUI;
     [SerializeField] Image nextRoleImage;
-
+    //PowerUps
     [SerializeField] Image dice1;
     [SerializeField] Image dice2;
     [SerializeField] Image dice3;
-
+    //DisplayNextDiceFace
     [SerializeField] List<Sprite> diceFaces = new List<Sprite>();
     [SerializeField] Sprite defualtDiceFace;
-
+    //Recharge
     float Timer;
     public int DelayAmount = 1;
 
@@ -47,7 +48,6 @@ public class DiceController : MonoBehaviour
         if (other.tag == "Powerup")
         {
             CollectDice();
-            
 
             Destroy(other.gameObject);
         }
@@ -58,9 +58,10 @@ public class DiceController : MonoBehaviour
         diceOverchargeUI.value = overChargeThreshold - (diceMeter - diceMeterRollCost);
         if(diceMeter >= diceMeterMax)
         {
-            nextRoleImage.sprite = diceFaces[nextRole];
+            nextRoleImage.sprite = diceFaces[nextRole - 1];
         }
     }
+
     public void AddDiceCharge(int diceCharge)
     {
         if (diceCharge + diceMeter >= diceMeterMax)
@@ -80,6 +81,7 @@ public class DiceController : MonoBehaviour
     public void ResetDiceCharge()
     {
         diceMeter = 0;
+        nextRoleImage.sprite = defualtDiceFace;
         updateUI();
     }
     public void FillDiceCharge()
@@ -134,8 +136,8 @@ public class DiceController : MonoBehaviour
 
     void ShowDice() //Display how many dice you have
     {
-        Debug.Log("You have " + numDice);
-        Debug.Log("Current class is " + (int)currentClass.role);
+        //Debug.Log("You have " + numDice);
+        //Debug.Log("Current class is " + (int)currentClass.role);
         if (numDice == 0)
         {
             dice1.enabled = false;
@@ -169,7 +171,7 @@ public class DiceController : MonoBehaviour
         FillDiceCharge();
     }
 
-    public bool canRoll()
+    public bool canRoll() 
     {
         if (diceMeter >= diceMeterRollCost)
         {
@@ -186,14 +188,14 @@ public class DiceController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //RechargeDiceMeter Over Time
     {
         Timer += Time.deltaTime;
 
         if (Timer >= DelayAmount)
         {
             Timer = 0f;
-            AddDiceCharge(1); // For every DelayAmount or "second" it will add one to the DiceMeter
+            AddDiceCharge(1); 
         }
     }
 

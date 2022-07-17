@@ -133,7 +133,7 @@ public class ClassController : MonoBehaviour
             {
                 role = (Role)diceController.nextRole;
             }
-            
+            diceController.ResetDiceCharge();
             weaponManager.showRightWeapons();
         }
         
