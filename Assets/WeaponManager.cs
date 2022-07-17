@@ -14,6 +14,9 @@ public class WeaponManager : MonoBehaviour
     public GameObject WarriorHat;
     public GameObject RangerHat;
     public GameObject WizardHat;
+    public GameObject PaladinHat;
+    public GameObject ThiefHat;
+    public GameObject LancerHat;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,38 +30,65 @@ public class WeaponManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.role==ClassController.Role.Warrior)
+        
+    }
+
+    public void showRightWeapons()
+    {
+        hideItems();
+        if (player.role == ClassController.Role.Warrior)
         {
             WarriorWeapon.SetActive(true);
-            RangerWeapon.SetActive(false);
-            WizardWeapon.SetActive(false);
 
             WarriorHat.SetActive(true);
-            RangerHat.SetActive(false);
-            WizardHat.SetActive(false);
 
         }
         if (player.role == ClassController.Role.Ranger)
         {
             RangerWeapon.SetActive(true);
-            WarriorWeapon.SetActive(false);
-            WizardWeapon.SetActive(false);
 
             RangerHat.SetActive(true);
-            WarriorHat.SetActive(false);
-            WizardHat.SetActive(false);
         }
-        if(player.role==ClassController.Role.Wizard)
+        if (player.role == ClassController.Role.Wizard)
         {
             WizardWeapon.SetActive(true);
-            WarriorWeapon.SetActive(false);
-            RangerWeapon.SetActive(false);
 
             WizardHat.SetActive(true);
-            WarriorHat.SetActive(false);
-            RangerHat.SetActive(false);
+        }
+
+        if (player.role == ClassController.Role.Paladin)
+        {
+            //WarriorWeapon.SetActive(true);
+
+            PaladinHat.SetActive(true);
 
         }
+        if (player.role == ClassController.Role.Thief)
+        {
+            //RangerWeapon.SetActive(true);
+
+            ThiefHat.SetActive(true);
+        }
+        if (player.role == ClassController.Role.Lancer)
+        {
+            //WizardWeapon.SetActive(true);
+
+            LancerHat.SetActive(true);
+        }
+    }
+
+    public void hideItems ()
+    {
+        WarriorWeapon.SetActive(false);
+        RangerWeapon.SetActive(false);
+        WizardWeapon.SetActive(false);
+
+        WarriorHat.SetActive(false);
+        RangerHat.SetActive(false);
+        WizardHat.SetActive(false);
+        PaladinHat.SetActive(false);
+        ThiefHat.SetActive(false);
+        LancerHat.SetActive(false);
     }
 }
 

@@ -47,7 +47,7 @@ public class ClassController : MonoBehaviour
     private float timeElapsed;
     private float attackLerpDuration = .1f;
 
-
+    [SerializeField] WeaponManager weaponManager;
     
 
     private void Start()
@@ -122,6 +122,7 @@ public class ClassController : MonoBehaviour
     {
         animator.SetTrigger("Roll");
         role = (Role)Random.Range(1,7);
+        weaponManager.showRightWeapons();
 
         //if (dice.canRoll())
         //{
