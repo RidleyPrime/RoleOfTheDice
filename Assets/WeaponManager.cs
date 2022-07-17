@@ -10,6 +10,9 @@ public class WeaponManager : MonoBehaviour
     public GameObject WarriorWeapon;
     public GameObject RangerWeapon;
     public GameObject WizardWeapon;
+    public GameObject PaladinWeapon;
+    public GameObject ThiefWeapon;
+    public GameObject LancerWeapon;
 
     public GameObject WarriorHat;
     public GameObject RangerHat;
@@ -21,10 +24,6 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PlayerArmature").GetComponent<ClassController>();
-
-        //WarriorHat = GameObject.Find("WarriorHat");
-        //RangerHat = GameObject.Find("RangerHat");
-        //WizardHat = GameObject.Find("WizardHat");
     }
 
     // Update is called once per frame
@@ -58,20 +57,20 @@ public class WeaponManager : MonoBehaviour
 
         if (player.role == ClassController.Role.Paladin)
         {
-            //WarriorWeapon.SetActive(true);
+            PaladinWeapon.SetActive(true);
 
             PaladinHat.SetActive(true);
 
         }
         if (player.role == ClassController.Role.Thief)
         {
-            //RangerWeapon.SetActive(true);
+            ThiefWeapon.SetActive(true);
 
             ThiefHat.SetActive(true);
         }
         if (player.role == ClassController.Role.Lancer)
         {
-            //WizardWeapon.SetActive(true);
+            LancerWeapon.SetActive(true);
 
             LancerHat.SetActive(true);
         }
@@ -82,6 +81,9 @@ public class WeaponManager : MonoBehaviour
         WarriorWeapon.SetActive(false);
         RangerWeapon.SetActive(false);
         WizardWeapon.SetActive(false);
+        PaladinWeapon.SetActive(false);
+        ThiefWeapon.SetActive(false);
+        LancerWeapon.SetActive(false);
 
         WarriorHat.SetActive(false);
         RangerHat.SetActive(false);

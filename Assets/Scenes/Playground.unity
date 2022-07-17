@@ -697,6 +697,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154054910}
   m_CullTransparentMesh: 1
+--- !u!1 &156654985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 060168e0cdff5074ca7f322a5e260ed4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1631851623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &158540147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -892,6 +898,12 @@ Transform:
   m_Father: {fileID: 837198248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &194406220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 43bf3a9d5a3d9e94dbd88673e2a3f5c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1630930551}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &214505475
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,6 +5229,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c0adde16bda830649a7983c3bef3bd2c,
     type: 3}
   m_PrefabInstance: {fileID: 1256811911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1250406547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cfbc888b3c38025438138e4e1c7972bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 496795933}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1256811911
 PrefabInstance:
@@ -9870,6 +9888,9 @@ MonoBehaviour:
   WarriorWeapon: {fileID: 1546133019}
   RangerWeapon: {fileID: 1693631876}
   WizardWeapon: {fileID: 1822509492}
+  PaladinWeapon: {fileID: 1250406547}
+  ThiefWeapon: {fileID: 194406220}
+  LancerWeapon: {fileID: 156654985}
   WarriorHat: {fileID: 1107156588}
   RangerHat: {fileID: 1235691264}
   WizardHat: {fileID: 290166028}
