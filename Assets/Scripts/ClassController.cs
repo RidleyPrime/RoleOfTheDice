@@ -120,14 +120,17 @@ public class ClassController : MonoBehaviour
 
     void OnRoll()
     {
-        if (dice.canRoll())
-        {
-            animator.SetTrigger("Roll");
-            Debug.Log("Roll!!!!");
-            dice.ResetDiceCharge();
-            role = dice.getNextRole();
-            dice.RoleReady = false;
-        }
+        animator.SetTrigger("Roll");
+        role = (Role)Random.Range(1,7);
+
+        //if (dice.canRoll())
+        //{
+            //animator.SetTrigger("Roll");
+        //    Debug.Log("Roll!!!!");
+        //    dice.ResetDiceCharge();
+        //    role = dice.getNextRole();
+        //    dice.RoleReady = false;
+        //}
 
     }
 
