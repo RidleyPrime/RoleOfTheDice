@@ -14,7 +14,12 @@ public class DiceController : MonoBehaviour
     public int diceHeal = 25;
  
     public int nextRole = -1;
+    public bool RoleReady = false;
     public int diceMeter = 0;
+    public int diceMeterRollCost = 100;
+    public int overChargeThreshold = 50;
+    private int diceMeterMax;
+
     [SerializeField] Slider diceMeterUI;
     [SerializeField] Slider diceOverchargeUI;
     [SerializeField] Image nextRoleImage;
@@ -29,6 +34,7 @@ public class DiceController : MonoBehaviour
     {
         health = GetComponent<PlayerHealth>();
         currentClass = GetComponent<ClassController>();
+        diceMeterMax = diceMeterRollCost + overChargeThreshold;
         ShowDice();
     }
 
@@ -45,17 +51,25 @@ public class DiceController : MonoBehaviour
     private void updateUI()
     {
         diceMeterUI.value = diceMeter;
-        diceOverchargeUI.value = 50 - (diceMeter - 100);
+        diceOverchargeUI.value = overChargeThreshold - (diceMeter - diceMeterRollCost);
+        if(diceMeter >= diceMeterMax)
+        {
+            nextRoleImage.sprite = diceFaces[nextRole];
+        }
     }
     public void AddDiceCharge(int diceCharge)
     {
-        if (diceCharge + diceMeter >= 150)
+        if (diceCharge + diceMeter >= diceMeterMax)
         {
-            diceMeter = 150;
+            diceMeter = diceMeterMax;
         }
         else
         {
             diceMeter += diceCharge;
+            if(diceMeter >= diceMeterRollCost && !RoleReady)
+            {
+                RollNextRole();
+            }
         }
         updateUI();
     }
@@ -66,10 +80,18 @@ public class DiceController : MonoBehaviour
     }
     public void FillDiceCharge()
     {
-        diceMeter = 150;
+        diceMeter = diceMeterMax;
         updateUI();
     }
 
+    public ClassController.Role getNextRole()
+    {
+        if(!RoleReady) 
+        {
+            RollNextRole();
+        }
+        return (ClassController.Role)nextRole;
+    }
     private void RollNextRole()
     {
         HashSet<ClassController.Role> validRoles = new HashSet<ClassController.Role>(System.Enum.GetValues(typeof(ClassController.Role)) as IEnumerable<ClassController.Role>);
@@ -78,9 +100,10 @@ public class DiceController : MonoBehaviour
         var newRole = validRoles.OrderBy(e => Random.Range(System.Int32.MinValue, System.Int32.MaxValue)).FirstOrDefault();
         nextRole = (int)newRole;
         Debug.Log("Next Dice is " + nextRole);
-
-        nextRoleImage.sprite = diceFaces[nextRole - 1];
+        RoleReady = true;
+        updateUI();
     }
+
 
     public void CollectDice()
     {
@@ -107,7 +130,8 @@ public class DiceController : MonoBehaviour
 
     void ShowDice() //Display how many dice you have
     {
-        Debug.Log("You have" + numDice);
+        Debug.Log("You have " + numDice);
+        Debug.Log("Current class is " + (int)currentClass.role);
         if (numDice == 0)
         {
             dice1.enabled = false;
@@ -143,8 +167,15 @@ public class DiceController : MonoBehaviour
 
     public bool canRoll()
     {
-        if (diceMeter >= 150)
+        if (diceMeter >= diceMeterRollCost)
         {
+            return true;
+        }
+        else if(numDice > 0) 
+        {
+            numDice--;
+            ShowDice();
+            Consume();
             return true;
         }
         return false;

@@ -37,7 +37,7 @@ public class ClassController : MonoBehaviour
 
     public GameObject RangerProjectile;
     public float RangerProjectileSpeed = 20f;
-
+    public DiceController dice;
     public GameObject WizardProjectile;
     public float WizardProjectileSpeed = 15f;
 
@@ -55,7 +55,7 @@ public class ClassController : MonoBehaviour
         //role = Role.Ranger;
         controller = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
-
+        dice = GetComponent<DiceController>();
         originalSpeed = controller.SprintSpeed;
     }
 
@@ -120,9 +120,15 @@ public class ClassController : MonoBehaviour
 
     void OnRoll()
     {
-        animator.SetTrigger("Roll");
-        Debug.Log("Roll!!!!");
-        role = (Role)Random.Range(2, 5);
+        if (dice.canRoll())
+        {
+            animator.SetTrigger("Roll");
+            Debug.Log("Roll!!!!");
+            dice.ResetDiceCharge();
+            role = dice.getNextRole();
+            dice.RoleReady = false;
+        }
+
     }
 
     private void Update()
