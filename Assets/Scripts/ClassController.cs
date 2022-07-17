@@ -37,7 +37,7 @@ public class ClassController : MonoBehaviour
 
     public GameObject RangerProjectile;
     public float RangerProjectileSpeed = 20f;
-
+    public DiceController dice;
     public GameObject WizardProjectile;
     public float WizardProjectileSpeed = 15f;
 
@@ -55,7 +55,7 @@ public class ClassController : MonoBehaviour
         //role = Role.Ranger;
         controller = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
-
+        dice = GetComponent<DiceController>();
         originalSpeed = controller.SprintSpeed;
     }
 
@@ -68,6 +68,10 @@ public class ClassController : MonoBehaviour
         {
             animator.SetTrigger("Attack");
 
+            if (animator.GetBool("MidAttack"))
+            {
+                gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+            }
 
             //Warrior Start
             bool attacking = animator.GetBool("MidAttack");
@@ -116,15 +120,25 @@ public class ClassController : MonoBehaviour
 
     void OnRoll()
     {
-        animator.SetTrigger("Roll");
-        Debug.Log("Roll!!!!");
+        if (dice.canRoll())
+        {
+            animator.SetTrigger("Roll");
+            Debug.Log("Roll!!!!");
+            dice.ResetDiceCharge();
+            role = dice.getNextRole();
+            dice.RoleReady = false;
+        }
+
     }
 
     private void Update()
     {
         animator.SetInteger("Class", (int)role);
 
-
+        if(animator.GetBool("MidAttack"))
+        {
+            gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+        }
         //RANGER RELEASE CHECK
         if (role == Role.Ranger)
         {
@@ -164,7 +178,7 @@ public class ClassController : MonoBehaviour
 
     void WizardAttack()
     {
-        Transform pivot = GameObject.Find("Right_Hand").transform;
+        Transform pivot = GameObject.Find("WizardAttackPivot").transform;
 
         GameObject tempProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         tempProjectile.transform.localScale = new Vector3(0.5f, .5f, .5f);
