@@ -2377,7 +2377,7 @@ MonoBehaviour:
   RotateTowardsTarget: 0
   m_AttackAnimationClipMissing: 0
   ProjectileCollisionPointY: 1.5
-  m_ProjectileCollisionPoint: {x: 1.6825484, y: 1.5, z: 4.6115923}
+  m_ProjectileCollisionPoint: {x: 17.07, y: -3.4700003, z: 9.799999}
   ObstructionTimer: 0
   ObstructionSeconds: 4
   IdleVolume: 1

@@ -127,11 +127,11 @@ public class ClassController : MonoBehaviour
 
             if (diceController.nextRole != -1)
             {
-                role = (Role)Random.Range(1, 7);
+                role = (Role)diceController.nextRole;
             }
             else
             {
-                role = (Role)diceController.nextRole;
+                role = (Role)Random.Range(1, 7);
             }
             diceController.ResetDiceCharge();
             weaponManager.showRightWeapons();
