@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int health; //the number that is our actual health
     public int maxHealth = 100; //our maximum health
     public Slider healthSlider; //the slider that represents our health
+    public TextMeshProUGUI Win;
 
-     public void Start()
+    public void Start()
      {
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
@@ -35,13 +37,21 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = health;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Void")
         {
             Debug.Log("Damage");
-            heal (-1);
+            heal (-100);
             //  healthSlider.value = health;
+        }
+        
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Win")
+        {
+            Win.enabled = true;
         }
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Powerup
   - AI
+  - Void
+  - Win
   layers:
   - Default
   - TransparentFX
