@@ -29,6 +29,10 @@ public class DiceController : MonoBehaviour
     [SerializeField] Image dice3;
 
     [SerializeField] List<Sprite> diceFaces = new List<Sprite>();
+    [SerializeField] Sprite defualtDiceFace;
+
+    float Timer;
+    public int DelayAmount = 1;
 
     void Start()
     {
@@ -184,7 +188,13 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Timer += Time.deltaTime;
+
+        if (Timer >= DelayAmount)
+        {
+            Timer = 0f;
+            AddDiceCharge(1); // For every DelayAmount or "second" it will add one to the DiceMeter
+        }
     }
 
     

@@ -48,7 +48,8 @@ public class ClassController : MonoBehaviour
     private float attackLerpDuration = .1f;
 
     [SerializeField] WeaponManager weaponManager;
-    
+    [SerializeField] DiceController diceController;
+
 
     private void Start()
     {
@@ -120,18 +121,22 @@ public class ClassController : MonoBehaviour
 
     void OnRoll()
     {
-        animator.SetTrigger("Roll");
-        role = (Role)Random.Range(1,7);
-        weaponManager.showRightWeapons();
+        if (diceController.diceMeter >= 100)
+        {
+            animator.SetTrigger("Roll");
 
-        //if (dice.canRoll())
-        //{
-            //animator.SetTrigger("Roll");
-        //    Debug.Log("Roll!!!!");
-        //    dice.ResetDiceCharge();
-        //    role = dice.getNextRole();
-        //    dice.RoleReady = false;
-        //}
+            if (diceController.nextRole != -1)
+            {
+                role = (Role)Random.Range(1, 7);
+            }
+            else
+            {
+                role = (Role)diceController.nextRole;
+            }
+            
+            weaponManager.showRightWeapons();
+        }
+        
 
     }
 
