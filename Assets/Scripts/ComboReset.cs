@@ -7,7 +7,8 @@ public class ComboReset : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        animator.SetBool("Attack2", false);
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,6 +25,7 @@ public class ComboReset : StateMachineBehaviour
         animator.SetBool("Attack1", false);
         animator.SetBool("Attack2", false);
         animator.SetBool("Attack3", false);
+        animator.SetBool("MidAttack", false);
 
     }
 

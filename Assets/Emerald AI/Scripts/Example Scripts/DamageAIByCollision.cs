@@ -12,7 +12,7 @@ namespace EmeraldAI.Example
     {
         public int DamageAmount = 10;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collision)
         {
             //Damages an AI to the collided object
             if (collision.gameObject.GetComponent<EmeraldAISystem>() != null)

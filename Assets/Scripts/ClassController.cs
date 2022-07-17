@@ -171,6 +171,7 @@ public class ClassController : MonoBehaviour
         tempArrow.AddComponent<Rigidbody>();
         tempArrow.GetComponent<Rigidbody>().useGravity = false;
         tempArrow.layer = 11;
+        tempArrow.AddComponent<myEmeraldAIAttack>();
 
         GameObject arrow = Instantiate(tempArrow, pivot.position, pivot.rotation);
         arrow.GetComponent<Rigidbody>().velocity = -RangerProjectileSpeed*Vector3.Normalize(pivot.position - GameObject.Find("PlayerAimPivot").transform.position);
