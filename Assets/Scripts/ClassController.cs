@@ -48,7 +48,6 @@ public class ClassController : MonoBehaviour
     private float attackLerpDuration = .1f;
 
     [SerializeField] WeaponManager weaponManager;
-    [SerializeField] DiceController diceController;
 
     [SerializeField] GameObject DiceModel1;
     [SerializeField] GameObject DiceModel2;
@@ -62,7 +61,6 @@ public class ClassController : MonoBehaviour
         //role = Role.Ranger;
         controller = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
-        dice = GetComponent<DiceController>();
         originalSpeed = controller.SprintSpeed;
     }
 
@@ -83,26 +81,9 @@ public class ClassController : MonoBehaviour
             //Warrior Start
             bool attacking = animator.GetBool("MidAttack");
             bool attack1 = animator.GetBool("Attack1");
-            bool attack2 = animator.GetBool("Attack2");
-            bool attack3 = animator.GetBool("Attack3");
 
+            animator.SetBool("Attack1", true);
 
-            if (!attack2 & !attack3)
-            {
-                animator.SetBool("Attack1", true);
-            }
-
-            if (attacking)
-            {
-                animator.SetBool("Attack2", true);
-                animator.SetBool("Attack1", false);
-
-
-            }
-            if (attack2)
-            {
-                animator.SetBool("Attack3", true);
-            }
         }
         //Warrior End
 
@@ -127,21 +108,6 @@ public class ClassController : MonoBehaviour
 
     void OnRoll()
     {
-        /*if (diceController.diceMeter >= 100)
-        {
-            animator.SetTrigger("Roll");
-
-            if (diceController.nextRole != -1)
-            {
-                role = (Role)diceController.nextRole;
-            }
-            else
-            {
-                role = (Role)Random.Range(1, 7);
-            }
-            diceController.ResetDiceCharge();
-            weaponManager.showRightWeapons();
-        }*/
         if (dice.canRoll())
         {
             animator.SetTrigger("Roll");
