@@ -2406,17 +2406,17 @@ PrefabInstance:
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -3.88
       objectReference: {fileID: 0}
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.92
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 8718778828885884488, guid: e5f4daf24146ee040b5a2d7a73b30aa0,
         type: 3}
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   m_text: 'WASD to Move
 
 
-    Space to Jumo
+    Space to Jump
 
 
     LClick to Attack
@@ -3622,9 +3622,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4893,7 +4893,10 @@ MonoBehaviour:
   maxDice: 3
   diceHeal: 25
   nextRole: 0
+  RoleReady: 0
   diceMeter: 0
+  diceMeterRollCost: 100
+  overChargeThreshold: 50
   diceMeterUI: {fileID: 816005733}
   diceOverchargeUI: {fileID: 669980788}
   nextRoleImage: {fileID: 304931307}

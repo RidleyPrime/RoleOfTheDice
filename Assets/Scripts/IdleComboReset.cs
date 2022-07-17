@@ -10,6 +10,7 @@ public class IdleComboReset : StateMachineBehaviour
         animator.SetBool("Attack1", false);
         animator.SetBool("Attack2", false);
         animator.SetBool("Attack3", false);
+        //animator.SetBool("MidAttack", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

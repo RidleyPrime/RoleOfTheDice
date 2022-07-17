@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class ClassController : MonoBehaviour
 {
@@ -34,6 +35,12 @@ public class ClassController : MonoBehaviour
     public ThirdPersonController controller;
     public InputAction leftClick;
 
+    public GameObject RangerProjectile;
+    public float RangerProjectileSpeed = 20f;
+    public DiceController dice;
+    public GameObject WizardProjectile;
+    public float WizardProjectileSpeed = 15f;
+
     //These floats are used for controlling character move speed during attacks
     private float tempSpeed;
     private float originalSpeed;
@@ -45,10 +52,10 @@ public class ClassController : MonoBehaviour
 
     private void Start()
     {
-        role = Role.Warrior;
+        //role = Role.Ranger;
         controller = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
-
+        dice = GetComponent<DiceController>();
         originalSpeed = controller.SprintSpeed;
     }
 
@@ -61,6 +68,10 @@ public class ClassController : MonoBehaviour
         {
             animator.SetTrigger("Attack");
 
+            if (animator.GetBool("MidAttack"))
+            {
+                gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+            }
 
             //Warrior Start
             bool attacking = animator.GetBool("MidAttack");
@@ -93,22 +104,41 @@ public class ClassController : MonoBehaviour
         if(role==Role.Ranger)
         {
             animator.SetTrigger("Attack");
-
+            
+            //gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
         }
         //Ranger End
+
+        //Wizard Start
+
+        if(role==Role.Wizard)
+        {
+            animator.SetTrigger("Attack");
+        }
+        //Wizard End
     }
 
     void OnRoll()
     {
-        animator.SetTrigger("Roll");
-        Debug.Log("Roll!!!!");
+        if (dice.canRoll())
+        {
+            animator.SetTrigger("Roll");
+            Debug.Log("Roll!!!!");
+            dice.ResetDiceCharge();
+            role = dice.getNextRole();
+            dice.RoleReady = false;
+        }
+
     }
 
     private void Update()
     {
         animator.SetInteger("Class", (int)role);
 
-
+        if(animator.GetBool("MidAttack"))
+        {
+            gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+        }
         //RANGER RELEASE CHECK
         if (role == Role.Ranger)
         {
@@ -116,7 +146,51 @@ public class ClassController : MonoBehaviour
             {
                 animator.SetBool("Attack2", true);
             }
+            else
+            {
+                gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+            }
         }
+
+        //Wizard Rotation Control
+        if (role == Role.Wizard)
+        {
+            if (animator.GetBool("MidAttack"))
+            {
+                gameObject.transform.LookAt(GameObject.Find("PlayerAimPivot").transform);
+            }
+        }
+    }
+
+    void RangerAttack()
+    {
+        Transform pivot = GameObject.Find("Left_Hand").transform;
+
+        GameObject tempArrow = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        tempArrow.transform.localScale = new Vector3(0.1f,.1f,.1f);
+        tempArrow.AddComponent<Rigidbody>();
+        tempArrow.GetComponent<Rigidbody>().useGravity = false;
+        tempArrow.layer = 11;
+        tempArrow.AddComponent<myEmeraldAIAttack>();
+
+        GameObject arrow = Instantiate(tempArrow, pivot.position, pivot.rotation);
+        arrow.GetComponent<Rigidbody>().velocity = -RangerProjectileSpeed*Vector3.Normalize(pivot.position - GameObject.Find("PlayerAimPivot").transform.position);
+    }
+
+    void WizardAttack()
+    {
+        Transform pivot = GameObject.Find("WizardAttackPivot").transform;
+
+        GameObject tempProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        tempProjectile.transform.localScale = new Vector3(0.5f, .5f, .5f);
+        tempProjectile.AddComponent<Rigidbody>();
+        tempProjectile.GetComponent<Rigidbody>().useGravity = false;
+        tempProjectile.layer = 11;
+
+        GameObject projectile = Instantiate(tempProjectile, pivot.position, pivot.rotation);
+        projectile.GetComponent<Rigidbody>().velocity = -RangerProjectileSpeed * Vector3.Normalize(pivot.position - GameObject.Find("PlayerAimPivot").transform.position);
+
+
     }
 
     public void LockMovement()
