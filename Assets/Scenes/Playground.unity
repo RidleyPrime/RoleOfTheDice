@@ -1025,17 +1025,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216737827}
-  m_LocalRotation: {x: 0.6024074, y: 0.28905043, z: -0.26108524, w: 0.6966992}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9556308}
+  m_LocalRotation: {x: 0.6045167, y: 0.2838768, z: -0.2637058, w: 0.69601214}
+  m_LocalPosition: {x: 0, y: 0, z: 2.969718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1537555830}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 82.024, y: 39.471, z: -6.432}
+  m_LocalEulerAnglesHint: {x: 82.403, y: 35.266, z: -10.401}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.69537926, y: 1.8138733}
+  m_AnchoredPosition: {x: -0.68071175, y: 1.7785326}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216737829
@@ -8628,10 +8628,11 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  RangerProjectile: {fileID: 0}
+  RangerProjectile: {fileID: 919132149155446097, guid: 3bac382dc2b41d341b2ba87db696df3a,
+    type: 3}
   RangerProjectileSpeed: 20
-  dice: {fileID: 0}
-  WizardProjectile: {fileID: 0}
+  dice: {fileID: 6982812147933622149}
+  WizardProjectile: {fileID: 106988, guid: a9892f6a83fd8d4468ce0c8a3d09d3cd, type: 3}
   WizardProjectileSpeed: 15
   weaponManager: {fileID: 2015679191}
   DiceModel1: {fileID: 203501037}

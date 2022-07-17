@@ -43,7 +43,8 @@ public class DiceController : MonoBehaviour
         ShowDice();
     }
 
-    private void OnTriggerEnter(Collider other)
+
+private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Powerup")
         {
@@ -109,7 +110,10 @@ public class DiceController : MonoBehaviour
         RoleReady = true;
         updateUI();
     }
-
+    void OnQuit()
+    {
+        Application.Quit(); 
+    }
 
     public void CollectDice()
     {
@@ -195,7 +199,7 @@ public class DiceController : MonoBehaviour
         if (Timer >= DelayAmount)
         {
             Timer = 0f;
-            AddDiceCharge(1); 
+            AddDiceCharge(5); 
         }
     }
 
